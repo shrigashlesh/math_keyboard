@@ -21,6 +21,9 @@ enum MathKeyboardType {
 
   /// Keyboard for number input only.
   numberOnly,
+
+  /// Keyboard for entering basic math expressions with numbers + operators and no extended functions.
+  nonFunctional,
 }
 
 /// Widget displaying the math keyboard.
@@ -120,12 +123,20 @@ class MathKeyboard extends StatelessWidget {
                                 ),
                                 child: _Buttons(
                                   controller: controller,
-                                  page1: type == MathKeyboardType.numberOnly
-                                      ? numberKeyboard
-                                      : standardKeyboard,
-                                  page2: type == MathKeyboardType.numberOnly
-                                      ? null
-                                      : functionKeyboard,
+                                  page1: switch (type) {
+                                    MathKeyboardType.numberOnly =>
+                                      numberKeyboard,
+                                    MathKeyboardType.expression =>
+                                      standardKeyboard,
+                                    MathKeyboardType.nonFunctional =>
+                                      nonFunctionalKeyboard,
+                                  },
+                                  page2: switch (type) {
+                                    MathKeyboardType.numberOnly => null,
+                                    MathKeyboardType.nonFunctional => null,
+                                    MathKeyboardType.expression =>
+                                      functionKeyboard,
+                                  },
                                   onSubmit: onSubmit,
                                 ),
                               ),

@@ -184,7 +184,9 @@ class _ClearableAutofocusExampleState
             padding: const EdgeInsets.all(16),
             child: MathField(
               autofocus: true,
+              keyboardType: MathKeyboardType.nonFunctional,
               controller: _controller,
+              variables: ['G', 'L'],
               decoration: InputDecoration(
                 suffix: MouseRegion(
                   cursor: SystemMouseCursors.click,

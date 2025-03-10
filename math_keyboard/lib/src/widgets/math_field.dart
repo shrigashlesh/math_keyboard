@@ -145,8 +145,10 @@ class _MathFieldState extends State<MathField> with TickerProviderStateMixin {
   late var _controller = widget.controller ?? MathFieldEditingController();
 
   List<String> get _variables => [
-        r'\pi',
-        'e',
+        if (widget.keyboardType != MathKeyboardType.nonFunctional) ...[
+          r'\pi',
+          'e',
+        ],
         ...widget.variables,
       ];
 

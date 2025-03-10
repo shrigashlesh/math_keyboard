@@ -298,3 +298,60 @@ final numberKeyboard = [
     SubmitButtonConfig(),
   ],
 ];
+
+/// Keyboard for math expression input without access to functions.
+final nonFunctionalKeyboard = [
+  [
+    _digitButtons[7],
+    _digitButtons[8],
+    _digitButtons[9],
+    const BasicKeyboardButtonConfig(
+      label: '×',
+      value: r'\cdot',
+      keyboardCharacters: ['*'],
+      highlighted: true,
+    ),
+    const BasicKeyboardButtonConfig(
+      label: '÷',
+      value: r'\frac',
+      keyboardCharacters: ['/'],
+      args: [TeXArg.braces, TeXArg.braces],
+      highlighted: true,
+    ),
+  ],
+  [
+    _digitButtons[4],
+    _digitButtons[5],
+    _digitButtons[6],
+    const BasicKeyboardButtonConfig(
+      label: '+',
+      value: '+',
+      keyboardCharacters: ['+'],
+      highlighted: true,
+    ),
+    _subtractButton,
+  ],
+  [
+    _digitButtons[1],
+    _digitButtons[2],
+    _digitButtons[3],
+    _decimalButton,
+    DeleteButtonConfig(),
+  ],
+  [
+    const BasicKeyboardButtonConfig(
+      label: '(',
+      value: '(',
+      highlighted: true,
+      keyboardCharacters: ['('],
+    ),
+    _digitButtons[0],
+    const BasicKeyboardButtonConfig(
+      label: ')',
+      value: ')',
+      highlighted: true,
+      keyboardCharacters: [')'],
+    ),
+    SubmitButtonConfig(flex: 4),
+  ],
+];
